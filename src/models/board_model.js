@@ -42,15 +42,39 @@ class Board {
     }
 
     createEmptyMap() {
-        // Array matrix onde iremos adicionar nossas linhas e colunas
         const map = [] 
-        // Loop em cima do total determinado de linhas
+
         for (let index = 0; index < this.rows; index++) { 
             // Inserindo novos array as linhas, o new Array cria um array 
             // com o total de espaços vazios que forem passados
             map.push(new Array(this.columns))
         }
-        // Retornando essa matrix para uso
         return map
-      }
+    }
+
+    renderMap(container) {
+        container.innerText = ''
+
+        for(let indexColuna = 0; indexColuna < this.columns; indexColuna++) {
+            const column = document.createElement('div') 
+            column.classList.add('column')
+            column.style.width = `${100/this.columns}%`
+            column.dataset.column = indexColuna
+            column.addEventListener('click', () => {"Adicionaremos uma função de click futuramente"})
+
+            for(let indexLinha = 0; indexLinha < this.rows; indexLinha++) {
+                const celula = document.createElement('div')
+                celula.classList.add('cell')
+                celula.style.height = `${100/this.rows}%`
+                celula.dataset.row = indexLinha
+                column.appendChild(celula)
+            }
+
+            container.appendChild(column)
+        }
+    }
 }
+
+let board = new Board(6,6, ['player1', 'player2'])
+const container = document.getElementById('table')
+board.renderMap(container)
