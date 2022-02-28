@@ -73,6 +73,26 @@ class Board {
             container.appendChild(column)
         }
     }
+
+    switchPlayer() {
+        if (this.currentPlayer === this.players[0]) {
+            this.currentPlayer = this.players[1]
+        } else {
+            this.currentPlayer = this.players[0]
+        }
+    }
+
+    handleClick(column) {
+        let row = this.map.findIndex(row => row[column])
+
+        if (row === -1) {
+            row = this.rows
+        }
+
+        this.map[row - 1[column]] = this.currentPlayer
+
+        const cell = new Cell(column, row, this.currentPlayer.className)
+    }
 }
 
 let board = new Board(6,6, ['player1', 'player2'])
