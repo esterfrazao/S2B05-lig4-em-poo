@@ -12,22 +12,26 @@
   .column {
     height: 100%;
   }
+
+  .column:hover{
+    background-color:antiquewhite ;
+  }
   
   .cell {
-    width: 100%;
+    width: 83px;
     border: 1px solid black;
   }
   
   .player1, .player2 {
-    width: 100%;
-    height: 100%;
+    width: 98%;
+    height: 98%;
     border-radius: 50%;
   }
   
   .player1 {
-    background-color: black;
+    background-color: #800db6;
   }
   
   .player2 {
-    background-color: brown;
+    background-color: #ee8f14;
   }

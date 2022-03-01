@@ -1,6 +1,6 @@
 class Cell {
     constructor(posicaoColuna, posicaoLinha, className) {
-        this.__coluna  = posicaoColuna
+        this._coluna  = posicaoColuna
         this._linha   = posicaoLinha
         this._className      = className
     }
@@ -21,7 +21,6 @@ class Cell {
     render() {
         const div = document.querySelector(`.column[data-column="${this.coluna}"] > .cell[data-row="${this.linha - 1}"]`)
         div.innerText = ''
-    
         const playerDiv = document.createElement('div')
         playerDiv.classList.add(this.className)
         div.appendChild(playerDiv)

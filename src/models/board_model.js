@@ -89,12 +89,41 @@ class Board {
             row = this.rows
         }
 
-        this.map[row - 1[column]] = this.currentPlayer
+        this.map[row - 1][column] = this.currentPlayer
 
         const cell = new Cell(column, row, this.currentPlayer.className)
+
+        cell.render()
+
+        if(this.isWinnableMove(column,row-1)) {
+         console.log(`${this.currentPlayer.name} ganhou`)
+        }
+        
+        this.switchPlayer()
+    }
+
+    isWinnableMove(column, row) {
+        return this.checkVertical(column, row)
+    }
+
+    checkVertical(column, row) {
+        let end = row + 3
+    
+        if(end >= this.rows){
+            end = this.rows -1
+        }
+    
+        let counter = 0
+        for (let index = row; index <= end; index++) {
+            if(this.map[index][column] === this.currentPlayer) {
+                counter++
+            } else {
+                counter = 0
+            }
+            if (counter === 4) {
+                return true
+            }
+        }
+        return false
     }
 }
-
-let board = new Board(6,6, ['player1', 'player2'])
-const container = document.getElementById('table')
-board.renderMap(container)
